@@ -3,7 +3,7 @@ import mammoth from "mammoth";
 import { Document, Paragraph, Packer, TextRun, AlignmentType, convertMillimetersToTwip } from "docx";
 import * as FileSaver from "file-saver";
 
-const dayHeadingRegex = /^(\d+)\s*\.\s*Gün|^(\d+)\s*Gün/i; 
+const dayHeadingRegex = /^(\d+)\s*\.\s*Gün|^(\d+)\s*Gün/i;
 const bodyTextSize = 18; // 9pt
 
 function isValidOutputName(name: string): boolean {
@@ -178,7 +178,7 @@ function DocxProcessor() {
     try {
       const arrayBuffer = await file.arrayBuffer();
       const { value: html } = await mammoth.convertToHtml({ arrayBuffer });
-      
+
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
       const items: DocxItem[] = [];
@@ -237,10 +237,10 @@ function DocxProcessor() {
                   items.push({ type: "paragraph", text: listText });
                 } else {
                   items.push({ type: "list", text: listText, level: getListLevel(child as Element) });
-                  
+
                   if (lastDayHeadingIndex !== -1 && items.length - 2 === lastDayHeadingIndex) {
                     items.push({ type: "empty-line" });
-                    lastDayHeadingIndex = -1; 
+                    lastDayHeadingIndex = -1;
                   }
                 }
               }
@@ -267,10 +267,10 @@ function DocxProcessor() {
         if (tag === "P") {
           if (text) {
             items.push({ type: "paragraph", text });
-            
+
             if (lastDayHeadingIndex !== -1 && items.length - 2 === lastDayHeadingIndex) {
               items.push({ type: "empty-line" });
-              lastDayHeadingIndex = -1; 
+              lastDayHeadingIndex = -1;
             }
           }
         }
@@ -336,8 +336,8 @@ function DocxProcessor() {
               }),
             ],
           }),
-          new Paragraph({}), 
-          new Paragraph({})  
+          new Paragraph({}),
+          new Paragraph({})
         );
       }
 
@@ -359,7 +359,7 @@ function DocxProcessor() {
               ...titleParagraphs,
               ...items.map((item) => {
                 if (item.type === "empty-line") {
-                  return new Paragraph({}); 
+                  return new Paragraph({});
                 }
 
                 if (item.type === "subheading") {
@@ -441,47 +441,48 @@ function DocxProcessor() {
             className="mt-2 block w-full text-sm text-slate-700 file:mr-4 file:py-2 file:px-4 file:rounded file:bg-violet-300 file:text-slate-700 hover:file:bg-violet-500 hover:file:text-white hover:file:cursor-pointer transition-all duration-200"
           />
         </label>
-        
+
         <label htmlFor="mainTitle" className="block mb-2">
           Tur Başlığı
-          <input 
-            className="block w-full rounded bg-white px-3 py-2 border border-slate-300 mt-1" 
-            id="mainTitle" 
-            value={mainTitleInput} 
-            onChange={(event) => setMainTitleInput(event.target.value)} 
+          <input
+            className="block w-full rounded bg-white px-3 py-2 border border-slate-300 mt-1"
+            id="mainTitle"
+            value={mainTitleInput}
+            onChange={(event) => setMainTitleInput(event.target.value)}
           />
         </label>
 
         <label htmlFor="airlines" className="block mb-2">Havayolu</label>
-        <select 
-          id="airlines" 
-          className="bg-white w-full block rounded border border-slate-300 px-3 py-2 mb-2" 
-          value={airline} 
+        <select
+          id="airlines"
+          className="bg-white w-full block rounded border border-slate-300 px-3 py-2 mb-2"
+          value={airline}
           onChange={(event) => setAirline(event.target.value)}
         >
           <option value="Türk Hava Yolları">THY</option>
           <option value="Pegasus Hava Yolları">Pegasus</option>
+          <option value="Ana Air">Ana Air</option>
         </select>
 
         <label htmlFor="nightInput" className="block mb-2">
           Gece
-          <input 
-            type="text" 
-            id="nightInput" 
-            value={nightInput} 
-            onChange={(event) => setNightInput(event.target.value)} 
-            className="bg-white block w-full rounded border border-slate-300 px-3 py-2 mt-1" 
+          <input
+            type="text"
+            id="nightInput"
+            value={nightInput}
+            onChange={(event) => setNightInput(event.target.value)}
+            className="bg-white block w-full rounded border border-slate-300 px-3 py-2 mt-1"
           />
         </label>
 
         <label htmlFor="dayInput" className="block mb-2">
           Gün
-          <input 
-            type="text" 
-            id="dayInput" 
-            value={dayInput} 
-            onChange={(event) => setDayInput(event.target.value)} 
-            className="bg-white block w-full rounded border border-slate-300 px-3 py-2 mt-1" 
+          <input
+            type="text"
+            id="dayInput"
+            value={dayInput}
+            onChange={(event) => setDayInput(event.target.value)}
+            className="bg-white block w-full rounded border border-slate-300 px-3 py-2 mt-1"
           />
         </label>
 
