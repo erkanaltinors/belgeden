@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DocxProcessor from '../components/DocxProcessor.tsx';
+---
+
+<Layout>
+	<main class="bg-slate-50">
+		<div class="container">
+			<div class="flex items-center justify-center h-screen">
+			<DocxProcessor client:load />
+			</div>
+		</div>
+	</main>
+</Layout>

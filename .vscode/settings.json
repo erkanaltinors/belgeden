@@ -1,0 +1,8 @@
+{
+    "tailwindCSS.includeLanguages": {
+    "astro": "html"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "class=\\\"([^\\\"]*)\\\""
+  ]
+}
