@@ -298,7 +298,7 @@ function DocxProcessor() {
             children: [
               new TextRun({
                 text: mainTitleInput.trim(),
-                size: 22,
+                size: 28,
                 bold: true,
                 font: "Arial",
               }),
@@ -314,7 +314,7 @@ function DocxProcessor() {
             children: [
               new TextRun({
                 text: `${airline.trim()} Tarifeli Seferi İle`,
-                size: 22,
+                size: 28,
                 bold: true,
                 font: "Arial",
               }),
@@ -330,7 +330,7 @@ function DocxProcessor() {
             children: [
               new TextRun({
                 text: `${nightInput.trim()} Gece ${dayInput.trim()} Gün`,
-                size: 22,
+                size: 28,
                 bold: true,
                 font: "Arial",
               }),
