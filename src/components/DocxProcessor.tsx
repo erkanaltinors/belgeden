@@ -298,7 +298,7 @@ function DocxProcessor() {
             children: [
               new TextRun({
                 text: mainTitleInput.trim(),
-                size: 28,
+                size: 22,
                 bold: true,
                 font: "Arial",
               }),
@@ -314,7 +314,7 @@ function DocxProcessor() {
             children: [
               new TextRun({
                 text: `${airline.trim()} Tarifeli Seferi İle`,
-                size: 28,
+                size: 22,
                 bold: true,
                 font: "Arial",
               }),
@@ -330,7 +330,7 @@ function DocxProcessor() {
             children: [
               new TextRun({
                 text: `${nightInput.trim()} Gece ${dayInput.trim()} Gün`,
-                size: 28,
+                size: 22,
                 bold: true,
                 font: "Arial",
               }),
@@ -461,7 +461,7 @@ function DocxProcessor() {
         >
           <option value="Türk Hava Yolları">THY</option>
           <option value="Pegasus Hava Yolları">Pegasus</option>
-          <option value="Ana Air">Ana Air</option>
+          <option value="Ana Air Havayolları">Ana Air</option>
         </select>
 
         <label htmlFor="nightInput" className="block mb-2">
